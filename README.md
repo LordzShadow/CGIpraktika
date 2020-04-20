@@ -1,8 +1,9 @@
 # CGIpraktika
+### Kustav Prants
 
 ## Dokumentatsioon
 
-Projektiga läks aega umbes 14 tundi kokku.  
+Projektiga läks aega umbes 16 tundi kokku.  
 Alguses, kui sain kätte ülesande, uurisin, kuidas töötab ASP .NET MVC, sest polnud seda kunagi varem kasutanud.  
 Küll olin ise teinud PHP-s Routing süsteemi, nii et enamus osast oli tuttav. C#-i polnud ka varem kasutanud, aga  
 see on väga Java sarnane, nii et polnud keeruline koodi kirjutada. Alguses võtsin ette MVC näidisprogrammi ning  
