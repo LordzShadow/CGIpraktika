@@ -10,7 +10,10 @@ uurisin, kuidas asjad seal täpselt töötavad. Projekti ehitasingi näidisproje
 kontrollerite, mudelite, service-itega Back-end poolel). Back-endis sai kiiresti tehtud mudelid ja kontrollerid ning  
 sai hakata kirjutama front-endi. Front-endis kasutasin Bootstrapi(kasutati juba näidisprojektis), JQueryt ja Vue.js-i.  
 Nendest olin varem kasutanud JQueryt ning lugenud olin teiste kohta. CSS-i ise ei kirjutanudki, sest kõik vajalik oli  
-Bootstrapis olemas ning ei hakanud kujundust muutma. Vue.js-iga oli mitmeid probleeme, aga alati leidis internetist vastuse.
+Bootstrapis olemas ning ei hakanud kujundust muutma. Vue.js-iga oli mitmeid probleeme, aga alati leidis internetist vastuse.  
+Koodi kirjutamiseks kasutasin VS Code-i, sest MVC näites oli juba näidatud, kuidas VS Code-iga serverit jooksutada ning olen  
+sellega tuttav. Back-end pool oli minu arvates lihtsam, kui front-end, sest front-endis pidi datat töötlema, aga back-endis lihtsalt  
+data saatma kliendile. Back-endis oli arusaamatusi, aga nendest on all pool kirjas.
 
 ### Arusaamatused:
 - Ei saanud aru, kuidas ja miks peaks looma Repository klassi, ning tegin enamus loogikast service klassis.
@@ -22,5 +25,6 @@ Bootstrapis olemas ning ei hakanud kujundust muutma. Vue.js-iga oli mitmeid prob
 
 ### Mujalt saadud koodijupid
 
-Eriti pikki kopeeritud koodijuppe ei ole(Kommentaarid on failides olemas), site.js failis on mõned. Mainin ära ka siin, et kasutasin autocomplete  
-jaoks teise inimese loodud vue.js komponenti(https://autocomplete.trevoreyre.com/#/vue-component).
+Eriti pikki kopeeritud koodijuppe ei ole(Kommentaarid on failides olemas), site.js failis on mõned. Mainin ära ka siin, et kasutasin autocomplete jaoks teise inimese loodud vue.js komponenti(https://autocomplete.trevoreyre.com/#/vue-component).  
+  
+Filmide informaatsioon on võetud IMDb-st.
