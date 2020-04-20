@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kusta\\Documents\\CGIpraktika\\MvcMovie\\MvcMovie.csproj",
-      "projectName": "MvcMovie",
-      "projectPath": "C:\\Users\\kusta\\Documents\\CGIpraktika\\MvcMovie\\MvcMovie.csproj",
+      "projectUniqueName": "C:\\Users\\kusta\\Documents\\CGIpraktika\\Movies\\Movies.csproj",
+      "projectName": "Movies",
+      "projectPath": "C:\\Users\\kusta\\Documents\\CGIpraktika\\Movies\\Movies.csproj",
       "packagesPath": "C:\\Users\\kusta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kusta\\Documents\\CGIpraktika\\MvcMovie\\obj\\",
+      "outputPath": "C:\\Users\\kusta\\Documents\\CGIpraktika\\Movies\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kusta\\AppData\\Roaming\\NuGet\\NuGet.Config"

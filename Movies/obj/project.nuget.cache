@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/VU4zgwOqjzW13BvH4womTAtNbTe6praEdIVNeN3jU/aPyMz7GRcxZ5us8kZ/zRt1ByR8RRIgXpM3+hQtXcVkw==",
+  "dgSpecHash": "FBElo2oTcKtSWyH+gbogp6LNre6r80u/B+8pPs5vudxSLIrpJnKZwgNeACjTKfcYJ8RANIvxgV6uMfzVuRSYQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kusta\\Documents\\CGIpraktika\\MvcMovie\\MvcMovie.csproj",
+  "projectFilePath": "C:\\Users\\kusta\\Documents\\CGIpraktika\\Movies\\Movies.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

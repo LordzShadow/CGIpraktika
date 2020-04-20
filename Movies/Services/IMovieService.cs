@@ -9,5 +9,6 @@ namespace Movies.Services
     {
         List<Movie> GetAllMovies();
         Movie GetMovieById(int id);
+        List<Category> GetCategories();
     }
 }
