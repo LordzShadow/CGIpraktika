@@ -21,21 +21,27 @@ var notfound = new Vue({
 var searchbar = new Vue({
   el: '#searchbar',
   data: {
-    result: null
+    result: null,
+    searching: false
   },
   methods: {
     search: function (event) {
+        this.searching = true;
         notfound.show = false;
         s_title = $("#search_in").val();
         let found = false;
         vu.info = [];
+        this.result = null;
         movies.forEach(function(entry) {
           if (entry.title.toLowerCase().includes(s_title.toLowerCase())) {
             vu.info.push(entry);
             found = true;
           }
         })
+        this.result = vu.info;
         if (!found) {
+          this.searching = false;
+          this.result = null;
           notfound.show = true;
         }
         // axios
@@ -110,13 +116,18 @@ var f_menu = new Vue({
     },
     scan: function () {
       notfound.show = false;
+      if (searchbar.searching) {
+        temp = searchbar.result;
+      } else {
+        temp = movies;
+      }
       vu.info = [];
       var found = false;
       var filter_on = false;
       vu.cats.forEach(function (cat) {
         if (this.filters[cat.name.toLowerCase()]) {
           filter_on = true;
-          movies.forEach( function (movie) {
+          temp.forEach( function (movie) {
             if (movie.categoryId == cat.id) {
               vu.info.push(movie);
               found = true;
@@ -127,7 +138,7 @@ var f_menu = new Vue({
       if (!found && filter_on) {
         notfound.show = true;
       } else if (!filter_on) {
-        vu.info = movies;
+        vu.info = temp;
       }
     }
   }
