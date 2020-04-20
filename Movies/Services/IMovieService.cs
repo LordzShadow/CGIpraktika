@@ -5,6 +5,7 @@ using Movies.Models;
 
 namespace Movies.Services
 {
+    // Interface servie jaoks.
     public interface IMovieService
     {
         List<Movie> GetAllMovies();

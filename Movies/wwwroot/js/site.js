@@ -1,23 +1,25 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
+﻿
 Vue.use(Autocomplete);
 movies = {}
 
+// Vue.js objekt not found teksti jaoks.
 var notfound = new Vue({
   el: '#notfound',
   data: {
     show: false
   },
   methods: {
+    // Funktsioon, mis peidab not found list elemendi ja kuvab kõik filmid.
     showall: function (event) {
       this.show = false;
-      vu.fetch(true);
+      searchbar.result = null;
+      searchbar.searching = false;
+      vu.info = movies;
     }
   }
 })
+
+// Vue.js objekt otsingu jaoks.
 var searchbar = new Vue({
   el: '#searchbar',
   data: {
@@ -25,6 +27,8 @@ var searchbar = new Vue({
     searching: false
   },
   methods: {
+    // funktsioon, mida kutsutakse, kui vajutatakse enterit või seartch nuppu
+    // Käib läbi movies listi(initsialiseeritud üleval pool) ja võrdleb tiitlit. 
     search: function (event) {
         this.searching = true;
         notfound.show = false;
@@ -51,56 +55,64 @@ var searchbar = new Vue({
         //   .catch(error => console.log(error));
         
     },
+    // funktsioon autocomplete jaoks.
+    // Kasutab vue.js autocomplete komponenti. https://autocomplete.trevoreyre.com/#/vue-component
     auto(input) {
       if (input.length < 1) { return []}
       return movies.filter(movie => {
         return movie.title.toLowerCase().includes(input.toLowerCase())
       })
     },
+    // funktsioon autocomplete jaoks. Saab json formaadist tiitli.
     getResultValue(result) {
       return result.title
     }
   }
 })
 
+// Vue.js objekt listi jaoks.
 var vu = new Vue({
     el: '#app',
     data: {
+        // Info on filmide data saadud api-st
+        // Cats on kategooria data saadud api-st
         info: null,
         cats: null
     },
+    // Kui element on kinnitatud, siis otsi filme (uuendab kui data muutub)
     mounted () {
       this.fetch(true);
     },
     methods: {
+      // GET request /api/ urlile
+      // saab filmide data ja kategooria data
       fetch: function (first = false) {
-        if (searchbar.result == null) {
-          if (first) {
-            axios
-            .get('/api/fetch')
-            .then(response => (this.info = response.data, movies = response.data))
-            .catch(error => console.log(error));
-            axios
-            .get('/api/fetchcat')
-            .then(response => (this.cats = response.data))
-            .catch(error => console.log(error))
-          } else {
-            axios
-            .get('/api/fetch')
-            .then(response => (this.info = response.data))
-            .catch(error => console.log(error))
-          }
+        // kui esimene kutse, siis täida movies list ja saa kategooriad, edaspidi pole vaja.
+        if (first) {
+          axios
+          .get('/api/fetch')
+          .then(response => (this.info = response.data, movies = response.data))
+          .catch(error => console.log(error));
+          axios
+          .get('/api/fetchcat')
+          .then(response => (this.cats = response.data))
+          .catch(error => console.log(error))
         } else {
-          this.info = [searchbar.result];
+          axios
+          .get('/api/fetch')
+          .then(response => (this.info = response.data))
+          .catch(error => console.log(error))
         }
       }
     }
   }
   )
 
+// Vue.js objekt filtri menüü jaoks
 var f_menu = new Vue({
   el: '#menu',
   data: {
+    // filtrid
     filters: {
       action: false,
       drama: false,
@@ -110,10 +122,12 @@ var f_menu = new Vue({
     },
   },
   methods: {
+    // Kui filtri nupp vajutatud, siis muuda booleani ja kontrolli filtreid
     toggle: function (name) {
       this.filters[name] = !this.filters[name];
       this.scan();
     },
+    // Käib läbi filtrid ja kui active siis käib läbi filmid. Filtriga sobivad filmid paneb listi.
     scan: function () {
       notfound.show = false;
       if (searchbar.searching) {
@@ -144,7 +158,8 @@ var f_menu = new Vue({
   }
 })
 
-// kood kopeeritud stackoverflowst
+// kood kopeeritud stackoverflowst, eemaldab html formi submit on enteri.
+// Kui enter, siis otsi.
 $('#searchbar').on('keyup keypress', function(e) {
   var keyCode = e.keyCode || e.which;
   if (keyCode === 13) {
@@ -156,6 +171,7 @@ $('#searchbar').on('keyup keypress', function(e) {
 
 
 // Enamus koodist all pool saadud bootstrapi dokumentatsioonist, veidi muudetud
+// Muudab modali infot movie id järgi, mille saab buttonilt.
 $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
   var movieid = button.attr('data-id'); // Extract info from data-* attributes
@@ -165,8 +181,6 @@ $('#exampleModal').on('show.bs.modal', function (event) {
       movie = entry;
     }
   })
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this);
   modal.find('.modal-title').text(movie.title);
   modal.find('#desc').text(movie.description);
@@ -174,4 +188,5 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   modal.find('#year').text(movie.year);
 })
 
+// Ei sulge filter dropdown menu-t kui vajutad nupule.
 $('.filter-btn').bind('click', function (e) { e.stopPropagation(); $(this).button('toggle') })

@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Movies.Models
 {
+    // Filmi mudel
     public class Movie
     {
         public int Id { get; set; }

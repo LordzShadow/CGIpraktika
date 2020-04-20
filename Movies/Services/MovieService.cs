@@ -7,7 +7,7 @@ namespace Movies.Services
 {
     public class MovieService : IMovieService
     {
-
+        // filmide list, fikseeritud.
         private List<Movie> moviesList = new List<Movie> {
             new Movie {Id = 1, Title = "Star Wars: The Rise of Skywalker", Year = 2019, Description = "The surviving members of the resistance face the First Order once again, and the legendary conflict between the Jedi and the Sith reaches its peak bringing the Skywalker saga to its end.", Rating = 6.7, CategoryId = 3},
             new Movie {Id = 2, Title = "The Shawshank Redemption", Year = 1994, Description = "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", Rating = 9.2, CategoryId = 2},
@@ -21,7 +21,7 @@ namespace Movies.Services
             new Movie {Id = 10, Title = "The Matrix", Year = 1999, Description = "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", Rating = 8.7, CategoryId = 3},
             new Movie {Id = 11, Title = "12 Angry Men", Year = 1957, Description = "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence", Rating = 8.9, CategoryId = 2}
         };
-
+        // kategooriate list, fikseeritud. Kui teha databaasiga, peaks js koodi ka muutma, et tekitaks ise nuppe, seal hetkel fikseeritud.
         private List<Category> catList = new List<Category> {
             new Category {Id = 3, Name = "Action"},
             new Category {Id = 1, Name = "Comedy"},
@@ -29,11 +29,13 @@ namespace Movies.Services
             new Category {Id = 4, Name = "Crime"},
             new Category {Id = 5, Name = "Romance"}
         };
+
+        // Tagastab filmide listi
         public List<Movie> GetAllMovies()
         {
             return moviesList;
         }
-        
+        // Tagastab filmi id järgi
         public Movie GetMovieById(int id)
         {
             for (int i = 0; i < moviesList.Count; i++)
@@ -46,6 +48,7 @@ namespace Movies.Services
             return null;
         }
 
+        // Tagastab kategooriate listi
         public List<Category> GetCategories()
         {
             return catList;

@@ -8,11 +8,8 @@ namespace Movies.Controllers
 {
     public class MoviesController : Controller
     {
-        public MoviesController()
-        {
-        }
 
-        // GET: /Movies/
+        // GET: /Movies/, returns Index view.
         public IActionResult Index()
         {
             return View();
